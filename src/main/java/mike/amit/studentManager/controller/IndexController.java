@@ -1,6 +1,8 @@
 package mike.amit.studentManager.controller;
 
 import mike.amit.studentManager.entity.Student;
+import mike.amit.studentManager.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,25 +16,32 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class IndexController {
 
-    Student student;
+    private final StudentRepository studentRepository;
 
+    @Autowired
+    public IndexController(StudentRepository studentRepository){
+        this.studentRepository = studentRepository;
+    }
     //AddStudent Mapping
     @GetMapping("addStudent")
-    public String showAddStudentPage(@Valid Student student, BindingResult result){
+    public String showAddStudentPage(Student student){
         return "addStudent";
     }
 
     @PostMapping("addStudent")
     public String addStudentToList(@Valid Student student, BindingResult result, Model model){
-        this.student = student;
+
         if(result.hasErrors())model.addAttribute("message", "Failed");
-        else model.addAttribute("message", "Success");
+        else {
+            studentRepository.save(student);
+            model.addAttribute("message", "Success");
+        }
         return "addStudent";
     }
 
     @GetMapping("updatedList")
     public String getUpdatedList(Model model){
-        model.addAttribute("student",this.student);
+        model.addAttribute("students",studentRepository.findAll());
         return "studentList";
     }
 

@@ -22,11 +22,11 @@
         <!--BODY-->
         </div>
         <!-- Card Component Body with No Students -->
-        <div th:if="${student} == null">
+        <div th:if="${students} == null">
             <p class="card-text">There are no students to display !</p>
         </div>
         <!-- Card Component Body with  Students-->
-        <div th:if="${student} != null">
+        <div th:if="${students} != null">
             <table class="table">
                 <thead>
                 <tr>
@@ -37,7 +37,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr th:each="student: ${students}">
                     <td th:text="${student.id}"/>
                     <td th:text="${student.firstName}"/>
                     <td th:text="${student.lastName}"/>
