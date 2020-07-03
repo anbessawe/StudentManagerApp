@@ -41,7 +41,7 @@ public class IndexController {
 
     @GetMapping("updatedList")
     public String getUpdatedList(Model model){
-        model.addAttribute("students",studentRepository.findAll());
+        model.addAttribute("studentList",studentRepository.findAll());
         return "studentList";
     }
 
