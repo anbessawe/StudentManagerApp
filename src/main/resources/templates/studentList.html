@@ -34,10 +34,12 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Student ID</th>
+                    <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,6 +48,9 @@
                     <td th:text="${student.firstName}"/>
                     <td th:text="${student.lastName}"/>
                     <td th:text="${student.email}"/>
+                    <td> <a th:href="@{/updateStudent/{id}(id=${student.id})}" class="btn btn-primary-sm">Update</a></td>
+                    <td> <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-primary-sm">Delete</a></td>
+
                 </tr>
                 </tbody>
             </table>
