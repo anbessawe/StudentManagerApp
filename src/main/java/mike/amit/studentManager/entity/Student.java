@@ -1,9 +1,19 @@
 package mike.amit.studentManager.entity;
 
+
+import org.springframework.lang.NonNull;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Student {
     private long id;
+
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String email;
 
     public Student() {
