@@ -49,8 +49,13 @@
                 <p><em class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></em></p>
             </div>
 
-            <div>
+            <div th:if="${student.id == 0}">
                 <button type="submit" class="btn btn-success">Add Student</button>
+                <a href="/" class="btn btn-outline-primary">Home</a>
+                <a href="/updatedList" class="btn btn-outline-primary">View Student List</a>
+            </div>
+            <div th:unless="${student.id == 0}">
+                <button type="submit" class="btn btn-warning">Update</button>
                 <a href="/" class="btn btn-outline-primary">Home</a>
                 <a href="/updatedList" class="btn btn-outline-primary">View Student List</a>
             </div>
