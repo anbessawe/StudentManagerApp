@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Student Management App</title>
@@ -22,7 +24,7 @@
 
         <!--BODY-->
         <!--Form-->
-        <form action="#" th:action="@{/addStudent}"
+        <form action="#" th:action="@{/addStudent/{id}(id=${student.id})}"
               th:object="${student}" method="post">
             <!--First Name-->
             <div class="form-group">
