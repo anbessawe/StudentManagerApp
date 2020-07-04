@@ -3,6 +3,7 @@ package mike.amit.studentManager.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -13,15 +14,16 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotBlank
+    @NotBlank(message = "First Name is Required")
     @Column(name = "firstName")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Last Name is Required")
     @Column(name = "lastName")
     private String lastName;
 
-    @NotBlank
+    @NotBlank(message = "Valid Email is Required")
+    @Email
     @Column(name = "email")
     private String email;
 

@@ -20,37 +20,42 @@
     <div class="card-body">
         <h5 class="card-title">Add Students</h5>
 
-    <!--BODY-->
+        <!--BODY-->
         <!--Form-->
         <form action="#" th:action="@{/addStudent}"
               th:object="${student}" method="post">
+            <!--First Name-->
             <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input
-                        type="text"
-                        th:field="*{firstName}"
-                        class="form-control"
-                        id="firstName"
-                        placeholder="FirstName">
+                <input type="text" th:field="*{firstName}" class="form-control" id="firstName"
+                       placeholder="Enter First Name of Student">
+                <p><em class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></em></p>
             </div>
+
+            <!--Last Name-->
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" th:field="*{lastName}" class="form-control" id="lastName" placeholder="LastName">
+                <input type="text" th:field="*{lastName}" class="form-control" id="lastName"
+                       placeholder="Enter Last Name of Student">
+                <p><em class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></em></p>
             </div>
+
+            <!--Email-->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="myemail@server.com">
+                <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="email@server.com">
+                <p><em class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></em></p>
             </div>
 
             <div>
                 <button type="submit" class="btn btn-success">Add Student</button>
-                <a href="/" class="btn btn-primary">Home</a>
-                <a href="/updatedList" class="btn btn-primary">View Student List</a>
+                <a href="/" class="btn btn-outline-primary">Home</a>
+                <a href="/updatedList" class="btn btn-outline-primary">View Student List</a>
             </div>
         </form>
 
 
-    <!--BODY-->
+        <!--BODY-->
     </div>
 
     <!--Success or Failure Notification-->
